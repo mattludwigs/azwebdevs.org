@@ -3,7 +3,7 @@ defmodule OrgApi.UserTest do
 
   alias OrgApi.User
 
-  @valid_attrs %{name: "some content"}
+  @valid_attrs %{email: "some content", name: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

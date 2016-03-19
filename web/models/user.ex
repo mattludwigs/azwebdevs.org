@@ -3,11 +3,12 @@ defmodule OrgApi.User do
 
   schema "users" do
     field :name, :string
+    field :email, :string
 
     timestamps
   end
 
-  @required_fields ~w(name)
+  @required_fields ~w(name email)
   @optional_fields ~w()
 
   @doc """
