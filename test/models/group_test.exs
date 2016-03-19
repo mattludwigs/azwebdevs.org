@@ -1,7 +1,7 @@
-defmodule OrgApi.GroupTest do
-  use OrgApi.ModelCase
+defmodule Org.GroupTest do
+  use Org.ModelCase
 
-  alias OrgApi.Group
+  alias Org.Group
 
   @valid_attrs %{description: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}

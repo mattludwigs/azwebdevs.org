@@ -6,20 +6,13 @@
 use Mix.Config
 
 # Configures the endpoint
-config :org_api, OrgApi.Endpoint,
+config :org, Org.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
-  secret_key_base: "/Ei2DWoTyIhoCdO02rexjeBbPEzJwy2F2NXigIfZDe7t0MchwvLc/p85FIq5cX4C",
+  secret_key_base: "dbaUFzsX9uXxHHCvaccSgGphSF+a+z9WYnY/J9qjYToo0UUgXgYkTqBpPsBllbJv",
   render_errors: [accepts: ~w(html json)],
-  pubsub: [name: OrgApi.PubSub,
+  pubsub: [name: Org.PubSub,
            adapter: Phoenix.PubSub.PG2]
-
-config :phoenix, :format_encoders,
- "json-api": Poison
-
-config :plug, :mimes, %{
- "application/vnd.api+json" => ["json-api"]
-}
 
 # Configures Elixir's Logger
 config :logger, :console,

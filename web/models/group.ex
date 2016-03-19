@@ -1,5 +1,5 @@
-defmodule OrgApi.Group do
-  use OrgApi.Web, :model
+defmodule Org.Group do
+  use Org.Web, :model
 
   schema "groups" do
     field :title, :string

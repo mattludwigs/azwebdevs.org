@@ -1,4 +1,4 @@
-defmodule OrgApi.ErrorHelpers do
+defmodule Org.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -26,10 +26,10 @@ defmodule OrgApi.ErrorHelpers do
     #
     #     dngettext "errors", "1 file", "%{count} files", count
     #
-    Gettext.dngettext(OrgApi.Gettext, "errors", msg, msg, opts[:count], opts)
+    Gettext.dngettext(Org.Gettext, "errors", msg, msg, opts[:count], opts)
   end
 
   def translate_error(msg) do
-    Gettext.dgettext(OrgApi.Gettext, "errors", msg)
+    Gettext.dgettext(Org.Gettext, "errors", msg)
   end
 end

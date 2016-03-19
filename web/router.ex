@@ -1,15 +1,35 @@
-defmodule OrgApi.Router do
-  use OrgApi.Web, :router
+defmodule Org.Router do
+  use Org.Web, :router
+
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
 
   pipeline :api do
-    plug :accepts, ["json-api"]
-    plug JaSerializer.ContentTypeNegotiation
-    plug JaSerializer.Deserializer
+    plug :accepts, ["json"]
   end
 
-  scope "/", OrgApi do
-    pipe_through :api
+  scope "/", Org do
+    pipe_through :browser # Use the default browser stack
 
-    resources "/users", UserController, except: [:new, :edit]
+    get "/", PageController, :index
+    resources "/users", UserController, only: [:index, :show]
+    resources "/groups", GroupController, only: [:index, :show]
   end
+
+  scope "/admin", Org.Admin do
+    pipe_through :browser
+
+    # resources "/users", UserController, only: [:edit]
+    # resources "/groups", GroupController, except: [:index, :show]
+  end
+
+  # Other scopes may use custom stacks.
+  # scope "/api", Org do
+  #   pipe_through :api
+  # end
 end

@@ -1,5 +1,5 @@
-defmodule OrgApi.ErrorView do
-  use OrgApi.Web, :view
+defmodule Org.ErrorView do
+  use Org.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

@@ -1,3 +1,3 @@
-defmodule OrgApi.LayoutView do
-  use OrgApi.Web, :view
+defmodule Org.LayoutView do
+  use Org.Web, :view
 end

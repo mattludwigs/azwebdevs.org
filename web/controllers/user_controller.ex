@@ -1,7 +1,7 @@
-defmodule OrgApi.UserController do
-  use OrgApi.Web, :controller
+defmodule Org.UserController do
+  use Org.Web, :controller
 
-  alias OrgApi.User
+  alias Org.User
 
   plug :scrub_params, "user" when action in [:create, :update]
 

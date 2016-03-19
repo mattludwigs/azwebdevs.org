@@ -1,7 +1,7 @@
-defmodule OrgApi.GroupController do
-  use OrgApi.Web, :controller
+defmodule Org.GroupController do
+  use Org.Web, :controller
 
-  alias OrgApi.Group
+  alias Org.Group
 
   plug :scrub_params, "group" when action in [:create, :update]
 

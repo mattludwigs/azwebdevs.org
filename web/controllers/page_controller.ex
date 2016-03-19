@@ -1,5 +1,5 @@
-defmodule OrgApi.PageController do
-  use OrgApi.Web, :controller
+defmodule Org.PageController do
+  use Org.Web, :controller
 
   def index(conn, _params) do
     render conn, "index.html"

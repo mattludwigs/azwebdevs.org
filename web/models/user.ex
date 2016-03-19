@@ -1,5 +1,5 @@
-defmodule OrgApi.User do
-  use OrgApi.Web, :model
+defmodule Org.User do
+  use Org.Web, :model
 
   schema "users" do
     field :name, :string
