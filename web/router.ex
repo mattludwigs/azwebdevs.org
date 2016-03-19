@@ -13,19 +13,19 @@ defmodule Org.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", Org.Admin do
+    pipe_through :browser
+
+    resources "/users", UserController, except: [:index, :show]
+    resources "/groups", GroupController, except: [:index, :show]
+  end
+
   scope "/", Org do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
     resources "/users", UserController, only: [:index, :show]
     resources "/groups", GroupController, only: [:index, :show]
-  end
-
-  scope "/admin", Org.Admin do
-    pipe_through :browser
-
-    # resources "/users", UserController, only: [:edit]
-    # resources "/groups", GroupController, except: [:index, :show]
   end
 
   # Other scopes may use custom stacks.
