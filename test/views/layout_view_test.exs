@@ -1,3 +1,3 @@
-defmodule OrgApi.LayoutViewTest do
-  use OrgApi.ConnCase, async: true
+defmodule Org.LayoutViewTest do
+  use Org.ConnCase, async: true
 end

@@ -1,4 +1,4 @@
-defmodule OrgApi.ConnCase do
+defmodule Org.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,21 +20,21 @@ defmodule OrgApi.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias OrgApi.Repo
+      alias Org.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import OrgApi.Router.Helpers
+      import Org.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint OrgApi.Endpoint
+      @endpoint Org.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Mongo.Ecto.truncate(OrgApi.Repo, [])
+      Mongo.Ecto.truncate(Org.Repo, [])
     end
 
     {:ok, conn: Phoenix.ConnTest.conn()}

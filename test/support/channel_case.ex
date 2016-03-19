@@ -1,4 +1,4 @@
-defmodule OrgApi.ChannelCase do
+defmodule Org.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,20 +20,20 @@ defmodule OrgApi.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias OrgApi.Repo
+      alias Org.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
 
 
       # The default endpoint for testing
-      @endpoint OrgApi.Endpoint
+      @endpoint Org.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Mongo.Ecto.truncate(OrgApi.Repo, [])
+      Mongo.Ecto.truncate(Org.Repo, [])
     end
 
     :ok

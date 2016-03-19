@@ -1,3 +1,3 @@
-defmodule OrgApi.GroupView do
-  use OrgApi.Web, :view
+defmodule Org.GroupView do
+  use Org.Web, :view
 end

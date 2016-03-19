@@ -1,12 +1,12 @@
-defmodule OrgApi.Web do
+defmodule Org.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use OrgApi.Web, :controller
-      use OrgApi.Web, :view
+      use Org.Web, :controller
+      use Org.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -33,19 +33,18 @@ defmodule OrgApi.Web do
     quote do
       use Phoenix.Controller
 
-      alias OrgApi.Repo
+      alias Org.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import OrgApi.Router.Helpers
-      import OrgApi.Gettext
+      import Org.Router.Helpers
+      import Org.Gettext
     end
   end
 
   def view do
     quote do
       use Phoenix.View, root: "web/templates"
-      use JaSerializer.PhoenixView
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -53,9 +52,9 @@ defmodule OrgApi.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import OrgApi.Router.Helpers
-      import OrgApi.ErrorHelpers
-      import OrgApi.Gettext
+      import Org.Router.Helpers
+      import Org.ErrorHelpers
+      import Org.Gettext
     end
   end
 
@@ -69,10 +68,10 @@ defmodule OrgApi.Web do
     quote do
       use Phoenix.Channel
 
-      alias OrgApi.Repo
+      alias Org.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
-      import OrgApi.Gettext
+      import Org.Gettext
     end
   end
 

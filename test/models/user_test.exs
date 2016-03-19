@@ -1,7 +1,7 @@
-defmodule OrgApi.UserTest do
-  use OrgApi.ModelCase
+defmodule Org.UserTest do
+  use Org.ModelCase
 
-  alias OrgApi.User
+  alias Org.User
 
   @valid_attrs %{email: "some content", name: "some content"}
   @invalid_attrs %{}

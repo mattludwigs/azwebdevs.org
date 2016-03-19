@@ -1,5 +1,5 @@
-defmodule OrgApi.PageControllerTest do
-  use OrgApi.ConnCase
+defmodule Org.PageControllerTest do
+  use Org.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

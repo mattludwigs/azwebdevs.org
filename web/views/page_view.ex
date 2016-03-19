@@ -1,3 +1,3 @@
-defmodule OrgApi.PageView do
-  use OrgApi.Web, :view
+defmodule Org.PageView do
+  use Org.Web, :view
 end

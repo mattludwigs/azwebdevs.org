@@ -1,7 +1,7 @@
-defmodule OrgApi.UserControllerTest do
-  use OrgApi.ConnCase
+defmodule Org.UserControllerTest do
+  use Org.ConnCase
 
-  alias OrgApi.User
+  alias Org.User
   @valid_attrs %{email: "some content", name: "some content"}
   @invalid_attrs %{}
 

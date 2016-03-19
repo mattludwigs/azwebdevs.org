@@ -1,3 +1,3 @@
-defmodule OrgApi.PageViewTest do
-  use OrgApi.ConnCase, async: true
+defmodule Org.PageViewTest do
+  use Org.ConnCase, async: true
 end

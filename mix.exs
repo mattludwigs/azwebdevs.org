@@ -1,8 +1,8 @@
-defmodule OrgApi.Mixfile do
+defmodule Org.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :org_api,
+    [app: :org,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule OrgApi.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {OrgApi, []},
+    [mod: {Org, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :mongodb_ecto]]
   end
@@ -36,7 +36,6 @@ defmodule OrgApi.Mixfile do
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
-     {:ja_serializer, "~> 0.8"},
      {:cowboy, "~> 1.0"}]
   end
 

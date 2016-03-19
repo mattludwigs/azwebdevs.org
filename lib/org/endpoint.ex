@@ -1,14 +1,14 @@
-defmodule OrgApi.Endpoint do
-  use Phoenix.Endpoint, otp_app: :org_api
+defmodule Org.Endpoint do
+  use Phoenix.Endpoint, otp_app: :org
 
-  socket "/socket", OrgApi.UserSocket
+  socket "/socket", Org.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :org_api, gzip: false,
+    at: "/", from: :org, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -32,8 +32,8 @@ defmodule OrgApi.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_org_api_key",
-    signing_salt: "3r69TL6m"
+    key: "_org_key",
+    signing_salt: "crYbTHWO"
 
-  plug OrgApi.Router
+  plug Org.Router
 end

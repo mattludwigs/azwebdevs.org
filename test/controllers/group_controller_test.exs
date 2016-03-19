@@ -1,7 +1,7 @@
-defmodule OrgApi.GroupControllerTest do
-  use OrgApi.ConnCase
+defmodule Org.GroupControllerTest do
+  use Org.ConnCase
 
-  alias OrgApi.Group
+  alias Org.Group
   @valid_attrs %{description: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}
 
