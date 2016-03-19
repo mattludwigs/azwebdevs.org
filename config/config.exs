@@ -14,6 +14,13 @@ config :org_api, OrgApi.Endpoint,
   pubsub: [name: OrgApi.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :phoenix, :format_encoders,
+ "json-api": Poison
+
+config :plug, :mimes, %{
+ "application/vnd.api+json" => ["json-api"]
+}
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
