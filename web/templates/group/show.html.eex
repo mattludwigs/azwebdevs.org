@@ -1,0 +1,23 @@
+<h2>Show group</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @group.title %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @group.url %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @group.description %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: group_path(@conn, :edit, @group) %>
+<%= link "Back", to: group_path(@conn, :index) %>
