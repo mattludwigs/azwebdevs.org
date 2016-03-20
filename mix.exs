@@ -19,7 +19,7 @@ defmodule Org.Mixfile do
   def application do
     [mod: {Org, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :mongodb_ecto]]
+                    :phoenix_ecto, :mongodb_ecto, :oauth2]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,6 +36,7 @@ defmodule Org.Mixfile do
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
+     {:oauth2, "~> 0.5"},
      {:cowboy, "~> 1.0"}]
   end
 
