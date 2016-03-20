@@ -1,7 +1,15 @@
 defmodule Org.PageController do
   use Org.Web, :controller
 
-  def index(conn, _params) do
-    render conn, "index.html"
+  def home(conn, _params) do
+    render conn, "home.html"
+  end
+
+  def signin(conn, _params) do
+    render conn, "signin.html"
+  end
+
+  def thanks(conn, _params) do
+    render conn, "thanks.html"
   end
 end
