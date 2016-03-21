@@ -7,7 +7,7 @@
       <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
     </span>
   <% else %>
-    <a class="btn" href="<%= auth_path @conn, :index, "github" %>">
+    <a class="btn" href="<%= page_path(@conn, :signin) %>">
       Sign in
     </a>
   <% end %>
