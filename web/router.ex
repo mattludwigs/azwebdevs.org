@@ -10,10 +10,15 @@ defmodule Org.Router do
     plug :assign_current_user
   end
 
+  pipeline :authenticated do
+    plug Org.Plugs.Authenticated
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  # Scope for OAuth2 routes
   scope "/auth", Org do
     pipe_through :browser
 
@@ -22,6 +27,7 @@ defmodule Org.Router do
     delete "/logout", AuthController, :delete
   end
 
+  # Scope for admin-only routes
   scope "/", Org.Admin do
     pipe_through :browser
 
@@ -29,14 +35,21 @@ defmodule Org.Router do
     resources "/groups", GroupController, except: [:index, :show]
   end
 
+  # Scope for authenticated-only routes (user is logged in)
   scope "/", Org do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :authenticated]
 
-    get "/", PageController, :home
-    get "/signin", PageController, :signin
     get "/apply", PageController, :apply
     get "/thanks", PageController, :thanks
     resources "/users", UserController, only: [:index, :show]
+  end
+
+  # Scope for all other routes
+  scope "/", Org do
+    pipe_through :browser
+
+    get "/", PageController, :home
+    get "/signin", PageController, :signin
     resources "/groups", GroupController, only: [:index, :show]
   end
 
