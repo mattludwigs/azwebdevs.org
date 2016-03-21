@@ -1,7 +1,7 @@
 defmodule Org.Admin.GroupControllerTest do
   use Org.ConnCase
 
-  alias Org.Admin.Group
+  alias Org.Group
   @valid_attrs %{description: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}
 

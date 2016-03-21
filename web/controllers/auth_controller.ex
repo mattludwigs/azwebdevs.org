@@ -1,6 +1,8 @@
 defmodule Org.AuthController do
   use Org.Web, :controller
 
+  alias Org.User
+
   @doc """
   This action is reached via `/auth/:provider` and redirects to the OAuth2 provider
   based on the chosen strategy.
@@ -28,14 +30,9 @@ defmodule Org.AuthController do
 
     # Request the user's data with the access token
     user = get_user!(provider, token)
+    save_user!(user)
 
     # Store the user in the session under `:current_user` and redirect to /.
-    # In most cases, we'd probably just store the user's ID that can be used
-    # to fetch from the database. In this case, since this example app has no
-    # database, I'm just storing the user map.
-    #
-    # If you need to make additional resource requests, you may want to store
-    # the access token as well.
     conn
     |> put_session(:current_user, user)
     |> put_session(:access_token, token.access_token)
@@ -50,6 +47,34 @@ defmodule Org.AuthController do
 
   defp get_user!("github", token) do
     {:ok, %{body: user}} = OAuth2.AccessToken.get(token, "/user")
-    %{name: user["name"], avatar: user["avatar_url"]}
+    %{
+      avatar: user["avatar_url"],
+      bio: user["bio"],
+      blog: user["blog"],
+      company: user["company"],
+      created_at: user["created_at"],
+      email: user["email"],
+      followers: user["followers"],
+      following: user["following"],
+      github_id: user["id"],
+      hireable: user["hireable"],
+      html_url: user["html_url"],
+      location: user["location"],
+      login: user["login"],
+      name: user["name"],
+      public_gists: user["public_gists"],
+      public_repos: user["public_repos"],
+      type: user["type"]
+    }
   end
+
+  defp save_user!(user) do
+    case Repo.get_by(User, github_id: user[:github_id]) do
+      nil  -> %User{} # User not found, we build one
+      user -> user    # User exists, let's use it
+    end
+    |> User.changeset(user)
+    |> Repo.insert_or_update!
+  end
+
 end

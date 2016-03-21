@@ -1,7 +1,7 @@
 defmodule Org.Admin.GroupController do
   use Org.Web, :controller
 
-  alias Org.Admin.Group
+  alias Org.Group
 
   plug :scrub_params, "group" when action in [:create, :update]
 
