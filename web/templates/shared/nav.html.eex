@@ -3,12 +3,11 @@
     <span class="logo">{az}</span> Web Developers
   </a>
   <%= if @current_user do %>
-    <h2>Welcome, <%= @current_user.name %>!</h2>
-    <img src="<%= @current_user.avatar %>" class="img-circle"/>
-    <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+    <span>
+      <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+    </span>
   <% else %>
-    <a class="btn btn-primary btn-lg" href="<%= auth_path @conn, :index, "github" %>">
-      <i class="fa fa-github"></i>
+    <a class="btn" href="<%= auth_path @conn, :index, "github" %>">
       Sign in
     </a>
   <% end %>

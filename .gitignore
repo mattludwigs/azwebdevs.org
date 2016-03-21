@@ -3,7 +3,8 @@
 /db
 /deps
 /*.ez
-mongodb
+/mongodb
+/logs
 
 # Generate on crash by the VM
 erl_crash.dump
@@ -11,6 +12,7 @@ erl_crash.dump
 # Static artifacts
 /node_modules
 npm-debug.log
+.env
 
 # Since we are building assets from web/static,
 # we ignore priv/static. You may want to comment

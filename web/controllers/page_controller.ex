@@ -9,6 +9,10 @@ defmodule Org.PageController do
     render conn, "signin.html"
   end
 
+  def apply(conn, _params) do
+    render conn, "apply.html"
+  end
+
   def thanks(conn, _params) do
     render conn, "thanks.html"
   end

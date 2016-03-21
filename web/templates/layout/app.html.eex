@@ -8,6 +8,7 @@
     <meta name="author" content="">
 
     <title>{az}webdevs</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/main.css") %>">
   </head>
 

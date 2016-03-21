@@ -34,6 +34,7 @@ defmodule Org.Router do
 
     get "/", PageController, :home
     get "/signin", PageController, :signin
+    get "/apply", PageController, :apply
     get "/thanks", PageController, :thanks
     resources "/users", UserController, only: [:index, :show]
     resources "/groups", GroupController, only: [:index, :show]
