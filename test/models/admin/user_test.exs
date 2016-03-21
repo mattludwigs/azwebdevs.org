@@ -1,7 +1,7 @@
 defmodule Org.Admin.UserTest do
   use Org.ModelCase
 
-  alias Org.Admin.User
+  alias Org.User
 
   @valid_attrs %{email: "some content", name: "some content"}
   @invalid_attrs %{}
