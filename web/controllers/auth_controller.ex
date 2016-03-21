@@ -13,9 +13,9 @@ defmodule Org.AuthController do
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, "You have been logged out!")
-    |> configure_session(drop: true)
-    |> redirect(to: "/")
+      |> put_flash(:info, "You have been logged out!")
+      |> configure_session(drop: true)
+      |> redirect(to: "/")
   end
 
   @doc """
@@ -30,13 +30,12 @@ defmodule Org.AuthController do
 
     # Request the user's data with the access token
     user = get_user!(provider, token)
-    save_user!(user)
 
     # Store the user in the session under `:current_user` and redirect to /.
     conn
-    |> put_session(:current_user, user)
-    |> put_session(:access_token, token.access_token)
-    |> redirect(to: "/")
+      |> put_session(:current_user, Map.get(user, :id))
+      |> put_session(:access_token, token.access_token)
+      |> redirect(to: "/")
   end
 
   defp authorize_url!("github"),   do: GitHub.authorize_url!
@@ -47,7 +46,7 @@ defmodule Org.AuthController do
 
   defp get_user!("github", token) do
     {:ok, %{body: user}} = OAuth2.AccessToken.get(token, "/user")
-    %{
+    user = %{
       avatar: user["avatar_url"],
       bio: user["bio"],
       blog: user["blog"],
@@ -66,9 +65,10 @@ defmodule Org.AuthController do
       public_repos: user["public_repos"],
       type: user["type"]
     }
+    find_or_create_user(user)
   end
 
-  defp save_user!(user) do
+  defp find_or_create_user(user) do
     case Repo.get_by(User, github_id: user[:github_id]) do
       nil  -> %User{} # User not found, we build one
       user -> user    # User exists, let's use it
@@ -76,5 +76,4 @@ defmodule Org.AuthController do
     |> User.changeset(user)
     |> Repo.insert_or_update!
   end
-
 end
