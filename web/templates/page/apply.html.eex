@@ -1,0 +1,96 @@
+<%= render Org.SharedView, "nav.html", assigns %>
+<div class="apply-content">
+  <div class="apply-header">
+      <h2 class="primary-header apply-header__header">You're almost there!</h2>
+      <p class="apply-header__description">
+        Please fill out the form below. Your request to join will be reviewed
+        as quickly as possible, and your invitation will be sent to the email
+        address below.
+      </p>
+      <div><span class="required">*</span> Provided by GitHub</div>
+  </div>
+
+  <div class="apply-form-wrapper">
+    <form class="apply-form" method="post" action="/apply" enctype="multipart/form-data" id="application">
+      <input type="hidden" name="_csrf" value="">
+      <div class="apply-form-fields">
+        <div>
+          <label for="fullName" class="apply-form-fields__label">
+            <p>
+              Name <span class="required">*</span>
+            </p>
+          </label>
+          <div>
+            <input
+              class="apply-form-fields__input"
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Name"
+              required>
+          </div>
+        </div>
+        <div>
+          <label for="email" class="apply-form-fields__label">
+            <p>
+              Email <span class="required">*</span>
+            </p>
+          </label>
+          <div>
+            <input
+              class="apply-form-fields__input"
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required>
+          </div>
+        </div>
+        <div>
+          <label for="company" class="apply-form-fields__label">
+            <p>Company</p>
+            <p class="secondary-description">Where do you work?</p>
+          </label>
+          <div>
+            <input
+              class="apply-form-fields__input"
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Company">
+          </div>
+        </div>
+        <div>
+          <label for="languages" class="apply-form-fields__label">
+            <p>Languages</p>
+            <p class="secondary-description"> Which (web) programming languages are you competent with?</p>
+          </label>
+          <div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="languages" value="es5">ES5</label>
+              <label><input type="checkbox" name="languages" value="es2015">ES2015</label>
+              <label><input type="checkbox" name="languages" value="es2016">ES2016</label>
+              <label><input type="checkbox" name="languages" value="dotnet">.NET</label>
+              <label><input type="checkbox" name="languages" value="python">Python</label>
+              <label><input type="checkbox" name="languages" value="php">PHP</label>
+              <label><input type="checkbox" name="languages" vlaue="ruby">Ruby</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="comments" class="apply-form-fields__label">
+            <p>Comments</p>
+            <p class="secondary-description">Any additional information you would like to tell us about yourself.</p>
+          </label>
+          <div>
+            <textarea class="form-control" id="comments" name="comments" rows="4" placeholder="Comments"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="apply-form__button-wrapper">
+        <button class="apply-form__button" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

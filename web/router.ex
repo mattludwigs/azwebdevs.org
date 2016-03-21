@@ -32,7 +32,10 @@ defmodule Org.Router do
   scope "/", Org do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", PageController, :home
+    get "/signin", PageController, :signin
+    get "/apply", PageController, :apply
+    get "/thanks", PageController, :thanks
     resources "/users", UserController, only: [:index, :show]
     resources "/groups", GroupController, only: [:index, :show]
   end
