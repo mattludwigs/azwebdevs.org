@@ -1,7 +1,7 @@
 defmodule Org.Admin.UserControllerTest do
   use Org.ConnCase
 
-  alias Org.Admin.User
+  alias Org.User
   @valid_attrs %{email: "some content", name: "some content"}
   @invalid_attrs %{}
 
