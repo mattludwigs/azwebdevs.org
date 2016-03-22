@@ -14,6 +14,11 @@ defmodule Org.Router do
     plug Org.Plugs.Authenticated
   end
 
+  pipeline :admin do
+    plug Org.Plugs.Authenticated
+    plug Org.Plugs.Admin
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -29,7 +34,7 @@ defmodule Org.Router do
 
   # Scope for admin-only routes
   scope "/", Org.Admin do
-    pipe_through :browser
+    pipe_through [:browser, :admin]
 
     resources "/users", UserController, except: [:index, :show]
     resources "/groups", GroupController, except: [:index, :show]
