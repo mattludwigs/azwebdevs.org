@@ -20,6 +20,7 @@ defmodule Org.User do
     field :public_repos, :integer
     field :role, :string, default: "user"
     field :type, :string
+    has_many :groups, Org.Group
 
     timestamps
   end

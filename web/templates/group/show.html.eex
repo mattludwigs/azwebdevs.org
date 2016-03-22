@@ -8,13 +8,18 @@
   </li>
 
   <li>
-    <strong>Url:</strong>
+    <strong>URL:</strong>
     <%= @group.url %>
   </li>
 
   <li>
     <strong>Description:</strong>
     <%= @group.description %>
+  </li>
+
+  <li>
+    <strong>Added by:</strong>
+    <%= @group.user.name %>
   </li>
 
 </ul>
