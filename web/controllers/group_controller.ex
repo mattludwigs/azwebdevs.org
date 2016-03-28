@@ -6,8 +6,8 @@ defmodule Org.GroupController do
   plug :scrub_params, "group" when action in [:create, :update]
 
   def index(conn, _params) do
-    groups = Repo.all(Group)
-    render(conn, "index.html", groups: groups)
+    # Maybe just show 404 instead?
+    redirect(conn, to: page_path(conn, :home))
   end
 
   def new(conn, _params) do
@@ -29,7 +29,7 @@ defmodule Org.GroupController do
   end
 
   def show(conn, %{"id" => id}) do
-    group = Repo.get!(Group, id)
+    [group] = Repo.all(from(g in Group, where: g.id == ^id, preload: :user))
     render(conn, "show.html", group: group)
   end
 

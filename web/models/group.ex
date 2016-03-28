@@ -5,6 +5,7 @@ defmodule Org.Group do
     field :title, :string
     field :url, :string
     field :description, :string
+    belongs_to :user, Org.User
 
     timestamps
   end
