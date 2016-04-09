@@ -14,9 +14,14 @@ defmodule Org.Router do
     plug Org.Plugs.Authenticated
   end
 
-  pipeline :admin do
+  pipeline :auth_admin do
     plug Org.Plugs.Authenticated
-    plug Org.Plugs.Admin
+    plug Org.Plugs.Authorized, ["admin"]
+  end
+
+  pipeline :auth_member do
+    plug Org.Plugs.Authenticated
+    plug Org.Plugs.Authorized, ["member", "admin"]
   end
 
   pipeline :api do
@@ -34,10 +39,17 @@ defmodule Org.Router do
 
   # Scope for admin-only routes
   scope "/", Org.Admin do
-    pipe_through [:browser, :admin]
+    pipe_through [:browser, :auth_admin]
 
     resources "/users", UserController, except: [:index, :show]
     resources "/groups", GroupController, except: [:index, :show]
+  end
+
+  # Scope for member-only routes
+  scope "/", Org do
+    pipe_through [:browser, :auth_member]
+
+    resources "/users", UserController, only: [:index, :show]
   end
 
   # Scope for authenticated-only routes (user is logged in)
