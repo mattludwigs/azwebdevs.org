@@ -1,4 +1,6 @@
 defmodule Org.Plugs.AssignCurrentUser do
+  @behaviour Plug
+
   import Plug.Conn
 
   alias Org.Repo

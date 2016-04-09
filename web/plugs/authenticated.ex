@@ -1,4 +1,6 @@
 defmodule Org.Plugs.Authenticated do
+  @behaviour Plug
+
   import Plug.Conn
   import Phoenix.Controller
 
