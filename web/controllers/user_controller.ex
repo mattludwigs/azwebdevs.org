@@ -6,7 +6,7 @@ defmodule Org.UserController do
   plug :scrub_params, "user" when action in [:create, :update]
 
   def index(conn, _params) do
-    users = Repo.all(User)
+    users = Repo.all(from u in User, where: u.role != "user")
     render(conn, "index.html", users: users)
   end
 
