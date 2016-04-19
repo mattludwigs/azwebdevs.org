@@ -12,3 +12,19 @@
     </a>
   <% end %>
 </nav>
+
+<%
+info = get_flash(@conn, :info)
+error = get_flash(@conn, :info)
+%>
+
+<%= if info do %>
+<div class="alert alert-info">
+  <%= info %>
+</div>
+<% end %>
+<% if error do %>
+<div class="alert alert-info">
+  <%= info %>
+</div>
+<% end %>
