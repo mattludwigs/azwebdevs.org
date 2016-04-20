@@ -1,6 +1,11 @@
-<h2>Edit group</h2>
+<%= render Org.SharedView, "nav.html", assigns %>
 
-<%= render "form.html", changeset: @changeset,
-                        action: group_path(@conn, :update, @group) %>
-
-<%= link "Back", to: group_path(@conn, :index) %>
+<article class="general-content group">
+  <h1 class="group__title">Edit <%= @group.title %></h1>
+  <section class="group__form">
+  <%= render "form.html", changeset: @changeset, action: group_path(@conn, :update, @group) %>
+  </section>
+  <footer class="group__actions">
+    <%= link "Back", to: group_path(@conn, :index) %>
+  </footer>
+</article>
