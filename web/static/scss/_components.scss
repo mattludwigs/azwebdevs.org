@@ -256,3 +256,76 @@
 .thanks-content__review, .thanks-content__process {
   line-height: 160%;
 }
+
+.card-list {
+  background-color: purple;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 5px 10px;
+}
+
+.card {
+  background-color: green;
+  width: calc(25% - 10px);
+  margin: 10px 5px 0;
+}
+
+.card__media {
+  background-color: skyblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__figure {
+  background-color: blue;
+  background-size: cover;
+  width: 100%;
+  height: 160px;
+  margin: 0;
+}
+
+.card__caption {
+  background-color: magenta;
+  text-align: center;
+}
+
+.card__content {
+  background-color: red;
+}
+
+.card__header {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 5px 0;
+  }
+}
+
+.card__detail {
+  height: 200px;
+  overflow: hidden;
+
+  p {
+    height: 200px;
+    overflow: hidden;
+  }
+}
+
+.card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px;
+
+  & > *, & > a.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: calc(50% - 2px);
+    margin: 2px 1px 0;
+  }
+
+  .phoenix-button-form .link {
+    button, a.btn {
+      width: 100%;
+    }
+  }
+}

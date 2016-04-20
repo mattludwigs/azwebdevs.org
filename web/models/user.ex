@@ -10,9 +10,9 @@ defmodule Org.User do
     field :email, :string
     field :followers, :integer
     field :following, :integer
+    field :github_id, :integer
     field :hireable, :boolean, default: false
     field :html_url, :string
-    field :github_id, :integer
     field :location, :string
     field :login, :string
     field :name, :string
