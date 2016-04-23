@@ -1,5 +1,5 @@
 <nav class="primary-nav">
-  <a href="/">
+  <a href="/" class="primary-nav__home-icon">
     <span class="logo">{az}</span> Web Developers
   </a>
   <%= if @current_user do %>
