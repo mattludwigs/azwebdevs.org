@@ -24,7 +24,9 @@ defmodule Org.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
+    user = User
+            |> Repo.get!(id)
+            |> Repo.preload(:groups)
     render(conn, "show.html", user: user)
   end
 

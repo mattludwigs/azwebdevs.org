@@ -20,8 +20,11 @@
                 <%= user.name %> (@<%= user.login %>)
               </a>
             </h4>
-            <%= if @current_user.role == "admin" do %>
-            <h6>Role: <%= user.role %></h6>
+            <%= cond do %>
+              <% @current_user.role == "admin" -> %>
+                <h6>Role: <%= @user.role %></h6>
+              <% @user.role == "admin" -> %>
+                <h6>(Admin)</h6>
             <% end %>
           </figcaption>
         </figure>
