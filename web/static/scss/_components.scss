@@ -1,3 +1,5 @@
+/** Nav **/
+
 .primary-nav {
   display: flex;
   flex-direction: row;
@@ -16,6 +18,8 @@
     color: $base-color-secondary;
   }
 }
+
+/** Home page **/
 
 .home-content__logo {
   font-size: 9em;
@@ -145,6 +149,8 @@
   display: block;
 }
 
+/** Sign-in page **/
+
 .signin-content a.btn, .error-content a.btn {
   margin: 1.2em 0;
   font-size: 1.2em;
@@ -159,6 +165,8 @@
     color: $dark-secondary;
   }
 }
+
+/** Apply page **/
 
 .apply-header__header {
   margin: 0 0 0.2em 0;
@@ -253,6 +261,8 @@
   color: $base-color-primary;
 }
 
+/** Thanks page **/
+
 .thanks-content__review, .thanks-content__process {
   line-height: 160%;
 }
@@ -328,4 +338,11 @@
       width: 100%;
     }
   }
+}
+
+/** Additional Github Fork Ribbon stylings **/
+
+.github-fork-ribbon:before, .github-fork-ribbon:after {
+  background-color: $base-color-secondary;
+  box-sizing: content-box;
 }
