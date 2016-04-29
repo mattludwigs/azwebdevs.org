@@ -51,8 +51,8 @@
 <h2>Groups owned by <%= @user.name %></h2>
 <% end %>
 
-<%= for group <- @user.groups do %>
 <section class="card-list">
+<%= for group <- @user.groups do %>
   <article class="card">
     <aside class="card__media">
       <h4>
@@ -82,5 +82,5 @@
       </footer>
     </section>
   </article>
-</section>
 <% end %>
+</section>
