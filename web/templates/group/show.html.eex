@@ -1,28 +1,17 @@
-<h2>Show group</h2>
+<%= render Org.SharedView, "nav.html", assigns %>
 
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @group.title %>
-  </li>
-
-  <li>
-    <strong>URL:</strong>
-    <%= @group.url %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @group.description %>
-  </li>
-
-  <li>
-    <strong>Added by:</strong>
-    <%= @group.user.name %>
-  </li>
-
-</ul>
-
-<%= link "Edit", to: group_path(@conn, :edit, @group) %>
-<%= link "Back", to: group_path(@conn, :index) %>
+<article class="general-content group">
+  <h1 class="group__title"><%= @group.title %></h1>
+  <h2 class="group__subtitle">Managed by: <%= @group.user.name %></h2>
+  <section class="group__description">
+    <h3 class="group__headline">About <%= @group.title %></h3>
+    <p><%= @group.description %></p>
+  </section>
+  <footer class="group__actions">
+    <a href="<%= @group.url %>">Go to Meetup</a>
+    <%= if @current_user && @current_user.role == "admin" do %>
+    <%= link "Edit", to: group_path(@conn, :edit, @group) %>
+    <% end %>
+    <%= link "Back", to: group_path(@conn, :index) %>
+  </footer>
+</article>
