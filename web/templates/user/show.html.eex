@@ -1,18 +1,86 @@
-<h2>Show user</h2>
+<%= render Org.SharedView, "nav.html", assigns %>
 
-<ul>
+<article class="card--wide">
+  <aside class="card__media">
+    <figure class="card__figure" style="background-image: url(<%= @user.avatar %>)">
+      <figcaption class="card__caption">
+        <h4>
+          <a href="<%= @user.html_url %>" title="View <%= @user.name %>'s GitHub profile">
+            <%= @user.name %> (@<%= @user.login %>)
+          </a>
+        </h4>
+        <%= cond do %>
+          <% @current_user.role == "admin" -> %>
+            <h6>Role: <%= @user.role %></h6>
+          <% @user.role == "admin" -> %>
+            <h6>(Admin)</h6>
+        <% end %>
+      </figcaption>
+    </figure>
+  </aside>
+  <section class="card__content">
+    <header class="card__header">
+      <h5><%= @user.location %> | <%= @user.company %></h5>
+      <%= if @user.blog do %>
+      <h6><a href="<%= @user.blog %>" title="<%= @user.name %>'s website">Visit Website</a></h6>
+      <% end %>
+      <h6>Following: <%= @user.following %></h6>
+      <h6>Followers: <%= @user.followers %></h6>
+      <h6>Repos: <%= @user.public_repos %></h6>
+      <h6>Gists: <%= @user.public_gists %></h6>
+    </header>
+    <section class="card__detail">
+      <p><%= @user.bio %></p>
+    </section>
+    <footer class="card__actions">
+      <td class="text-right">
+        <%= if @current_user.role == "admin" do %>
+        <%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
+        <div class="phoenix-button-form">
+          <%= link "Delete", to: user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        </div>
+        <% end %>
+      </td>
+    </footer>
+  </section>
+</article>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </li>
+<%= if Enum.empty?(@user.groups) do %>
+<h2><%= @user.name %> has not created any groups.</h2>
+<% else %>
+<h2>Groups owned by <%= @user.name %></h2>
+<% end %>
 
-  <li>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </li>
-
-</ul>
-
-<%= link "Edit", to: user_path(@conn, :edit, @user) %>
-<%= link "Back", to: user_path(@conn, :index) %>
+<section class="card-list">
+<%= for group <- @user.groups do %>
+  <article class="card">
+    <aside class="card__media">
+      <h4>
+        <a href="<%= group.url %>" title="View <%= group.title %>'s Meetup page">
+          <%= group.title %>
+        </a>
+      </h4>
+    </aside>
+    <section class="card__content">
+      <section class="card__detail">
+        <p><%= group.description %></p>
+      </section>
+      <footer class="card__actions">
+        <td class="text-right">
+          <%= if @current_user.role == "admin" do %>
+          <%= link "Show Group", to: group_path(@conn, :show, group), class: "btn btn-default btn-xs" %>
+          <%= link "Edit", to: group_path(@conn, :edit, group), class: "btn btn-default btn-xs" %>
+          <div class="phoenix-button-form">
+            <%= link "Delete",
+                     to: group_path(@conn, :delete, group),
+                     method: :delete,
+                     data: [confirm: "Are you sure you want to delete #{group.title}?"],
+                     class: "btn btn-danger btn-xs" %>
+          </div>
+          <% end %>
+        </td>
+      </footer>
+    </section>
+  </article>
+<% end %>
+</section>
