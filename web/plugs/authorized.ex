@@ -14,20 +14,20 @@ defmodule Org.Plugs.Authorized do
     else
       debug("User #{current_user.id} is NOT authorized as one of #{roles}, redirecting")
       conn
-        |> flash_and_redirect
+      |> flash_and_redirect
     end
   end
 
   def call(conn, _) do
     debug("Unable to find current user")
     conn
-      |> flash_and_redirect
+    |> flash_and_redirect
   end
 
   defp flash_and_redirect(conn) do
     conn
-      |> put_flash(:error, "You do not have the proper authorization to do that")
-      |> redirect(to: "/")
-      |> halt
+    |> put_flash(:error, "You do not have the proper authorization to do that")
+    |> redirect(to: "/")
+    |> halt
   end
 end

@@ -15,8 +15,8 @@ defmodule Org.Plugs.Authenticated do
     if current_user do
       case Repo.get(User, current_user) do
         nil  -> conn
-                  |> configure_session(drop: true) # Drop invalid user session
-                  |> flash_and_redirect
+                |> configure_session(drop: true) # Drop invalid user session
+                |> flash_and_redirect
         user -> assign(conn, :current_user, user)
       end
     else
@@ -27,8 +27,8 @@ defmodule Org.Plugs.Authenticated do
 
   defp flash_and_redirect(conn) do
     conn
-      |> put_flash(:error, "Please sign in")
-      |> redirect(to: "/")
-      |> halt
+    |> put_flash(:error, "Please sign in")
+    |> redirect(to: "/")
+    |> halt
   end
 end
