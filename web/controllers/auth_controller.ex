@@ -13,9 +13,9 @@ defmodule Org.AuthController do
 
   def delete(conn, _params) do
     conn
-      |> put_flash(:info, "You have been logged out!")
-      |> configure_session(drop: true)
-      |> redirect(to: "/")
+    |> put_flash(:info, "You have been logged out!")
+    |> configure_session(drop: true)
+    |> redirect(to: "/")
   end
 
   @doc """
@@ -33,9 +33,9 @@ defmodule Org.AuthController do
 
     # Store the user in the session under `:current_user` and redirect to /.
     conn
-      |> put_session(:current_user, Map.get(user, :id))
-      |> put_session(:access_token, token.access_token)
-      |> redirect(to: "/")
+    |> put_session(:current_user, Map.get(user, :id))
+    |> put_session(:access_token, token.access_token)
+    |> redirect(to: "/")
   end
 
   defp authorize_url!("github"),   do: GitHub.authorize_url!

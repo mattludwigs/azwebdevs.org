@@ -17,8 +17,8 @@ defmodule GitHub do
 
   def client do
     Application.get_env(:org, GitHub)
-      |> Keyword.merge(config())
-      |> OAuth2.Client.new()
+    |> Keyword.merge(config())
+    |> OAuth2.Client.new()
   end
 
   def authorize_url!(params \\ []) do
@@ -37,7 +37,7 @@ defmodule GitHub do
 
   def get_token(client, params, headers) do
     client
-      |> put_header("Accept", "application/json")
-      |> AuthCode.get_token(params, headers)
+    |> put_header("Accept", "application/json")
+    |> AuthCode.get_token(params, headers)
   end
 end
