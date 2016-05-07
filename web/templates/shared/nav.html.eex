@@ -4,10 +4,10 @@
   </a>
   <%= if @current_user do %>
     <span>
-      <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %>
+      <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
     </span>
   <% else %>
-    <a class="btn" href="<%= page_path(@conn, :signin) %>">
+    <a class="btn primary" href="<%= page_path(@conn, :signin) %>">
       Sign in
     </a>
   <% end %>

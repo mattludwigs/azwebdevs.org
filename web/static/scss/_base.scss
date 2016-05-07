@@ -74,13 +74,29 @@ button {
   border-radius: 8px;
   padding: 0.5em 1.5em;
   transition: all 0.2s;
-  background-color: $base-color-secondary;
+  background-color: $grey;
   color: $off-white;
   text-align: center;
   border-bottom: none;
 
+  &.primary {
+    background-color: $base-color-secondary;
+
+    &:hover {
+      background-color: $dark-secondary;
+    }
+  }
+
+  &.danger {
+    background-color: $error;
+
+    &:hover {
+      background-color: $dark-error;
+    }
+  }
+
   &:hover {
-    background-color: $dark-secondary;
+    background-color: $dark-grey;
   }
 }
 

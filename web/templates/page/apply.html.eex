@@ -89,7 +89,7 @@
       </div>
 
       <div class="apply-form__button-wrapper">
-        <button class="apply-form__button" type="submit">Submit</button>
+        <button class="apply-form__button primary" type="submit">Submit</button>
       </div>
     </form>
   </div>
