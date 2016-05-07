@@ -55,6 +55,15 @@
   animation-timing-funciton: linear;
 }
 
+// Flash Message animations
+
+.flash {
+  animation-name: fadeOut;
+  animation-duration: 10000ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
 @keyframes scale {
   0% {
     transform: scale(0.9);
@@ -90,4 +99,16 @@
       transform: translate(0px, 0px);
       opacity: 1;
     }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
