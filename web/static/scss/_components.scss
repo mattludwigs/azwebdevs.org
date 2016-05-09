@@ -1,4 +1,4 @@
-/** Nav **/
+// Nav
 
 .primary-nav {
   display: flex;
@@ -151,7 +151,7 @@
   display: block;
 }
 
-/** Sign-in page **/
+// Sign-in Page
 
 .signin-content a.btn, .error-content a.btn {
   margin: 1.2em 0;
@@ -168,7 +168,7 @@
   }
 }
 
-/** Apply page **/
+// Apply page
 
 .apply-header__header {
   margin: 0 0 0.2em 0;
@@ -263,7 +263,7 @@
   color: $base-color-primary;
 }
 
-/** Thanks page **/
+// Thanks page
 
 .thanks-content__review, .thanks-content__process {
   line-height: 160%;
@@ -342,9 +342,39 @@
   }
 }
 
-/** Additional Github Fork Ribbon stylings **/
+// Additional Github Fork Ribbon stylings
+
+.github-fork-ribbon {
+  border-bottom: none;
+}
 
 .github-fork-ribbon:before, .github-fork-ribbon:after {
   background-color: $base-color-secondary;
   box-sizing: content-box;
+}
+
+// Flash Messages
+
+.flash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.flash--error, .flash--info {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 0.3em 0.8em;
+  margin: 2px;
+}
+
+.flash--error {
+  background-color: $error;
+}
+
+.flash--info {
+  background-color: $base-color-secondary;
 }
