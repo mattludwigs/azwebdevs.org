@@ -8,10 +8,10 @@
   <div>
     <a class="btn" href="<%= group.url %>">View details &raquo;</a>
     <%= if @current_user && @current_user.role == "admin" do %>
-    <%= link "Show", to: group_path(@conn, :show, group), class: "btn btn-default btn-xs" %>
-    <%= link "Edit", to: group_path(@conn, :edit, group), class: "btn btn-default btn-xs" %>
+    <%= link "Show", to: group_path(@conn, :show, group), class: "btn" %>
+    <%= link "Edit", to: group_path(@conn, :edit, group), class: "btn" %>
     <div class="phoenix-button-form">
-      <%= link "Delete", to: group_path(@conn, :delete, group), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      <%= link "Delete", to: group_path(@conn, :delete, group), method: :delete, data: [confirm: "Are you sure?"], class: "btn danger" %>
     </div>
     <% end %>
   </div>
@@ -23,5 +23,5 @@
 <% end %>
 
 <%= if @current_user && @current_user.role == "admin" do %>
-  <%= link "New group", to: group_path(@conn, :new), class: "btn btn-default btn-xs" %>
+  <%= link "New group", to: group_path(@conn, :new), class: "btn" %>
 <% end %>

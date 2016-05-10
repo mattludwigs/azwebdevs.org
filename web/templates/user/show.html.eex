@@ -35,9 +35,9 @@
     <footer class="card__actions">
       <td class="text-right">
         <%= if @current_user.role == "admin" do %>
-        <%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn" %>
         <div class="phoenix-button-form">
-          <%= link "Delete", to: user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          <%= link "Delete", to: user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "btn danger" %>
         </div>
         <% end %>
       </td>
@@ -68,14 +68,14 @@
       <footer class="card__actions">
         <td class="text-right">
           <%= if @current_user.role == "admin" do %>
-          <%= link "Show Group", to: group_path(@conn, :show, group), class: "btn btn-default btn-xs" %>
-          <%= link "Edit", to: group_path(@conn, :edit, group), class: "btn btn-default btn-xs" %>
+          <%= link "Show Group", to: group_path(@conn, :show, group), class: "btn" %>
+          <%= link "Edit", to: group_path(@conn, :edit, group), class: "btn" %>
           <div class="phoenix-button-form">
             <%= link "Delete",
                      to: group_path(@conn, :delete, group),
                      method: :delete,
                      data: [confirm: "Are you sure you want to delete #{group.title}?"],
-                     class: "btn btn-danger btn-xs" %>
+                     class: "btn danger" %>
           </div>
           <% end %>
         </td>
