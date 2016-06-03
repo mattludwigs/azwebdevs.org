@@ -20,13 +20,20 @@ defmodule Org.User do
     field :public_repos, :integer
     field :role, :string, default: "user"
     field :type, :string
+
     has_many :groups, Org.Group
+
+    # Application details
+    field :has_applied, :boolean, default: false
+    field :comments, :string
+    embeds_one :languages, Org.Language
 
     timestamps
   end
 
-  @required_fields ~w(avatar created_at email followers following html_url github_id login name public_gists public_repos role type)
-  @optional_fields ~w(bio blog company hireable location)
+  @required_fields ~w(avatar created_at email followers following html_url github_id login name
+                      public_gists public_repos role type)
+  @optional_fields ~w(bio blog company hireable location has_applied comments languages)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
