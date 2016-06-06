@@ -3,7 +3,7 @@ defmodule Org.UserController do
 
   alias Org.User
 
-  plug :scrub_params, "user" when action in [:create, :update]
+  plug :scrub_params, "user" when action in [:create, :update, :apply]
 
   def index(conn, _params) do
     users = Repo.all(from u in User, where: u.role != "user")
@@ -50,11 +50,25 @@ defmodule Org.UserController do
     end
   end
 
+  def apply(conn, %{"id" => id, "user" => user_params}) do
+    user = Repo.get!(User, id)
+    user_params = Map.put(user_params, "has_applied", true)
+    changeset = User.changeset(user, user_params)
+
+    case Repo.update(changeset) do
+      {:ok, user} ->
+        # TODO: send application details to Slack
+        conn
+        |> put_flash(:info, "Application submitted successfully.")
+        |> redirect(to: user_path(conn, :show, user))
+      {:error, changeset} ->
+        render(conn, "apply.html", user: user, changeset: changeset)
+    end
+  end
+
   def delete(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
 
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
     Repo.delete!(user)
 
     conn
