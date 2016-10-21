@@ -1,9 +1,7 @@
 defmodule Org.Admin.GroupController do
   use Org.Web, :controller
-  # use Ecto
 
   alias Org.Group
-  alias Org.User
 
   plug :scrub_params, "group" when action in [:create, :update]
 
@@ -18,13 +16,7 @@ defmodule Org.Admin.GroupController do
   end
 
   def create(conn, %{"group" => group_params}) do
-    # user = Repo.get!(User, conn.assigns.current_user.id)
-    # Ecto.build_assoc(user, :groups, group_params)
     changeset = Group.changeset(%Group{user_id: conn.assigns.current_user.id}, group_params)
-    # |> Ecto.Changeset.put_assoc(:user, user)
-    # Ecto.Changeset.change(changeset, %{user_id: conn.assigns.current_user.id})
-    IO.puts("DEBUGGING")
-    IO.inspect(changeset)
 
     case Repo.insert(changeset) do
       {:ok, group} ->
