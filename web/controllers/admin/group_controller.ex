@@ -16,12 +16,12 @@ defmodule Org.Admin.GroupController do
   end
 
   def create(conn, %{"group" => group_params}) do
-    changeset = Group.changeset(%Group{}, group_params)
+    changeset = Group.changeset(%Group{user_id: conn.assigns.current_user.id}, group_params)
 
     case Repo.insert(changeset) do
-      {:ok, _group} ->
+      {:ok, group} ->
         conn
-        |> put_flash(:info, "Group created successfully.")
+        |> put_flash(:info, "#{group.title} created successfully.")
         |> redirect(to: group_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

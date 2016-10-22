@@ -22,5 +22,7 @@ defmodule Org.Group do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    # |> Ecto.Changeset.validate_required(@required_fields ++ ["user_id"])
+    |> assoc_constraint(:user)
   end
 end
